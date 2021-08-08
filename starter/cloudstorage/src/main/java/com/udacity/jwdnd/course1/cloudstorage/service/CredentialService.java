@@ -36,20 +36,19 @@ public class CredentialService {
         credential.setUserId(userId);
 
         credential.setKey(this.generateKey());
-        credential.setEncryptedPassword(encryptionService.encryptValue(credential.getDecryptedPassword(), credential.getKey()));
+        credential.setPassword(encryptionService.encryptValue(credential.getPassword(), credential.getKey()));
 
         return credentialMapper.saveCredential(credential);
     }
 
     public int updateCredential(Credential credential){
         credential.setKey(this.generateKey());
-        credential.setEncryptedPassword(encryptionService.encryptValue(credential.getDecryptedPassword(), credential.getKey()));
+        credential.setPassword(encryptionService.encryptValue(credential.getPassword(), credential.getKey()));
 
         return credentialMapper.updateCredential(credential);
     }
 
     public List<Credential> getUserCredentials(Integer userId){
-        System.out.println(userId);
 
         return credentialMapper.getUsersCredentials(userId);
     }

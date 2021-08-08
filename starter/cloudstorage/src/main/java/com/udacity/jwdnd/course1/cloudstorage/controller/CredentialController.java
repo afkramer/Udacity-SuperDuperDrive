@@ -7,6 +7,7 @@ import com.udacity.jwdnd.course1.cloudstorage.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,6 @@ public class CredentialController {
             // the credential is being saved for the first time
             if(credentialService.isCredentialAvailable(credential.getUrl(), credential.getUsername(), userId)){
                 rowsAffected = credentialService.saveCredential(credential, userId);
-                System.out.println("rows " + rowsAffected + " credId " + credential.getCredentialId());
             }else{
                 errorMessage = "There is already a credential with that url and username.";
                 rowsAffected = -1;
@@ -52,7 +52,7 @@ public class CredentialController {
         return "/result";
     }
 
-    @PostMapping("/delete-credential/{credentialId}")
+    @GetMapping("/delete-credential/{credentialId}")
     public String deleteCredential(@PathVariable Integer credentialId, Model model){
         int rowsDeleted = credentialService.deleteCredential(credentialId);
 

@@ -53,7 +53,7 @@ public class FileController {
         }
 
         if(uploadError == null){
-            model.addAttribute("success", true);
+            model.addAttribute("success", "The file was successfully saved.");
         }else{
             model.addAttribute("error", uploadError);
         }
@@ -81,7 +81,7 @@ public class FileController {
         if (rowsDeleted < 0){
             model.addAttribute("error", "The file could not be deleted.");
         }else{
-            model.addAttribute("success", true);
+            model.addAttribute("success", "The file was successfully deleted.");
         }
 
         return "/result";
