@@ -36,6 +36,10 @@ public class FileController {
         // no need to check if file is empty, this is handled in html template
         int userId = userService.getUser(auth.getName()).getUserId();
 
+        if(fileService.isFileTooLarge(fileUpload)){
+            uploadError = "That file is too large. The maximum limit is 5 MB";
+        }
+
         if (!fileService.isFileNameAvailable(fileUpload, userId)){
             uploadError = "That filename is already in use. Please select a different one.";
         }

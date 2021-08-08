@@ -61,6 +61,8 @@ public class FileService {
         return fileUpload.isEmpty();
     }
 
+    public boolean isFileTooLarge(MultipartFile fileUpload){return fileUpload.getSize()>5000000;}
+
     public int deleteOneFile(Integer fileId){
         return fileMapper.deleteFile(fileId);
     }
