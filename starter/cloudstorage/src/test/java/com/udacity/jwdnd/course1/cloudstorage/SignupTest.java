@@ -78,12 +78,10 @@ public class SignupTest {
         SignupPage signupPage = new SignupPage(webDriver);
         signupPage.signup("Adriana", "Kramer", username2, password2);
 
+        LoginPage loginPage = new LoginPage(webDriver);
         WebDriverWait wait = new WebDriverWait(webDriver, 5);
         WebElement marker = wait.until(webDriver -> webDriver.findElement(By.id("success-msg")));
 
-        signupPage.clickLogin();
-
-        LoginPage loginPage = new LoginPage(webDriver);
         loginPage.login(username2, password2);
 
         marker = wait.until(webDriver -> webDriver.findElement(By.id("page-load-marker")));

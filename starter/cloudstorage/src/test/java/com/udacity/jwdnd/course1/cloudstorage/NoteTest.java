@@ -107,7 +107,7 @@ public class NoteTest extends LoginTest{
 		resultPage.clickHomeSuccess();
 		assertEquals("Home", webDriver.getTitle());
 
-		assertEquals(countBeforeAdd - 1, notePage.countNotes());
+		assertEquals(countBeforeAdd, notePage.countNotes());
 	}
 
 }
